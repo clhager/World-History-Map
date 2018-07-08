@@ -43,7 +43,7 @@ public class OutlineCreator : MonoBehaviour
 		// Create line prefab
 		LineRenderer linePrefab = new GameObject().AddComponent<LineRenderer>();
 		linePrefab.transform.name = "Line";
-		linePrefab.numPositions = 0;
+		linePrefab.positionCount = 0;
 		linePrefab.material = material;
 		linePrefab.startWidth = linePrefab.endWidth = lineWidth;
 
@@ -62,8 +62,8 @@ public class OutlineCreator : MonoBehaviour
 		while (true) {
 
 			// Add to line
-			line.numPositions++;
-			line.SetPosition(line.numPositions - 1, vertices[nextVert] + bringFoward);
+			line.positionCount++;
+			line.SetPosition(line.positionCount - 1, vertices[nextVert] + bringFoward);
 
 			// Get next vertex
 			nextVert = lookup[nextVert];
@@ -77,8 +77,8 @@ public class OutlineCreator : MonoBehaviour
 			if (nextVert == startVert) {
 
 				// Finish this shape's line
-				line.numPositions++;
-				line.SetPosition(line.numPositions - 1, vertices[nextVert] + bringFoward);
+				line.positionCount++;
+				line.SetPosition(line.positionCount - 1, vertices[nextVert] + bringFoward);
 
 				// Go to next shape if one exists
 				if (lookup.ContainsKey(highestVert + 1)) {

@@ -1,4 +1,6 @@
 *.meta
 .DS_Store
 
+Data
+Data/
 Data/*
